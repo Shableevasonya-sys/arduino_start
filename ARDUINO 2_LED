@@ -1,0 +1,57 @@
+int red = 9;
+int yellow = 10;
+int redOn = 900;
+int redOff = 100;
+int yellowOn = 250;
+int yellowOff = 250;
+int ired;
+int iyellow;
+String runred = " The red LED is BLINKING";
+String runyellow = "The yellow LED is BLINKING";
+
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(115200);
+  pinMode(red, OUTPUT);
+  pinMode(yellow, OUTPUT);  
+
+  Serial.println("How many tires do u want the red LED blink? ");  
+while (Serial.available()== 0) { }
+ired = Serial.parseInt();
+while (Serial.available() > 0)
+Serial.read();
+
+Serial.println("How many tires do u want rhe yellow LED blink? ");
+while( Serial.available() == 0){ }
+iyellow = Serial.parseInt();
+while (Serial.available() > 0)
+Serial.read();
+}
+
+void loop(){
+
+
+Serial.println(runred);
+  for (int i = 1; i<= ired; i = i+1) {
+    Serial.print(" u are blink #:");
+    Serial.println(i);
+    digitalWrite(red, HIGH);
+    delay(redOn);
+    digitalWrite(red, LOW);
+    delay(redOff);
+  }
+Serial.println(" ");
+Serial.print(runyellow);
+  for (int i = 1; i <= iyellow; i = i+1){
+  Serial.print(" u yellow are blink #:");
+  Serial.println(i);
+  digitalWrite(yellow, HIGH);
+  delay(yellowOn);
+  digitalWrite(yellow,LOW);
+  delay(yellowOff);
+  }
+Serial.println(" ");
+
+}
+
+ 
